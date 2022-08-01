@@ -9,6 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    var emailResult: Bool = false
+    var passwordResult: Bool = false
+    
+    
+    
     // MARK: - 이메일 입력하는 텍스트 뷰
     private lazy var emailTextFieldView: UIView = {
         let view = UIView()
@@ -167,6 +173,11 @@ class ViewController: UIViewController {
         passwordTextField.delegate = self
         
         
+        // 바탕화면 선택하면 키보드 내려가기
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+            view.addGestureRecognizer(tap)
+        
+        
         makeUI()
     }
     
@@ -279,18 +290,44 @@ class ViewController: UIViewController {
 
 }
 
-var emailResult: Bool = false
-var passwordResult: Bool = false
+
+// 이메일 정규식
+func isValidEmail(email: String?) -> Bool {
+    
+    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    let emailResult = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+    
+    return emailResult.evaluate(with: email)
+}
+
+
+func isValidPassword(pw: String?) -> Bool{
+    
+    // 8자리 ~ 50자리 영어+숫자+특수문자
+    let pwRegEx = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{8,50}"
+    let pwResult = NSPredicate(format: "SELF MATCHES %@", pwRegEx)
+    
+    return pwResult.evaluate(with: pw)
+}
+
+
+
+
+
+
 
 
 // ViewController 확장 후 프로토콜 채택해야 코드가 깔끔해짐.
 // 뷰 컨트롤러 내 viewDidLoad 함수 실
 extension ViewController: UITextFieldDelegate {
+
+
     
     // 입력 시작시
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if textField == emailTextField {
+            print("이메일 텍스트 입력 시작")
             emailTextFieldView.backgroundColor = #colorLiteral(red: 0.2972877622, green: 0.2973434925, blue: 0.297280401, alpha: 1)
             emailInfoLabel.font = UIFont.systemFont(ofSize: 11)
             
@@ -300,6 +337,7 @@ extension ViewController: UITextFieldDelegate {
         }
         
         if textField == passwordTextField {
+            print("비밀번호 텍스트 입력 시작.")
             passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.2972877622, green: 0.2973434925, blue: 0.297280401, alpha: 1)
             passwordInfoLabel.font = UIFont.systemFont(ofSize: 11)
             
@@ -323,6 +361,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField == emailTextField {
+            print("이메일 텍스트 입력 끝.")
             emailTextFieldView.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
             
             // 빈칸이면 원래대로 되돌리기
@@ -333,6 +372,7 @@ extension ViewController: UITextFieldDelegate {
         }
         
         if textField == passwordTextField {
+            print("비밀번호 텍스트 입력 끝.")
             passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
             
             // 빈칸이면 원래대로 되돌리기
@@ -358,24 +398,24 @@ extension ViewController: UITextFieldDelegate {
         }
     }
     
-    // 정규식
-    func isValidEmail(email: String?) -> Bool {
-        
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailResult = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        return emailResult.evaluate(with: email)
-    }
-    
-    
-    func isValidPassword(pw: String?) -> Bool{
-        
-        // 8자리 ~ 50자리 영어+숫자+특수문자
-        let pwRegEx = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{8,50}"
-        let pwResult = NSPredicate(format: "SELF MATCHES %@", pwRegEx)
-        
-        return pwResult.evaluate(with: pw)
-    }
+//    // 이메일 정규식
+//    func isValidEmail(email: String?) -> Bool {
+//
+//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+//        let emailResult = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+//
+//        return emailResult.evaluate(with: email)
+//    }
+//
+//
+//    func isValidPassword(pw: String?) -> Bool{
+//
+//        // 8자리 ~ 50자리 영어+숫자+특수문자
+//        let pwRegEx = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{8,50}"
+//        let pwResult = NSPredicate(format: "SELF MATCHES %@", pwRegEx)
+//
+//        return pwResult.evaluate(with: pw)
+//    }
 
     
     // 입력할때마다 실행
@@ -422,8 +462,8 @@ extension ViewController: UITextFieldDelegate {
         emailResult = isValidEmail(email: email)
         passwordResult = isValidPassword(pw: password)
         
-//        print("emailResult: \(emailResult)")
-//        print("passworedResult : \(passwordResult)")
+        print("emailResult: \(emailResult)")
+        print("passworedResult : \(passwordResult)")
         
         if emailResult == true && passwordResult == true {
             loginButton.backgroundColor = .red
@@ -433,4 +473,14 @@ extension ViewController: UITextFieldDelegate {
             loginButton.isEnabled = false
         }
     }
+    
+    
+    // 다른 곳 누르면 키보드 내려감.
+    @objc func dismissKeyboard() {
+            view.endEditing(true)
+    }
+    
+    
+    
 }
+
