@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+// 클래스는 구조체보다 느리기때문에 상속을 못하도록 final로 설정
+final class ViewController: UIViewController {
     
     
     var emailResult: Bool = false
@@ -16,6 +18,7 @@ class ViewController: UIViewController {
     
     
     // MARK: - 이메일 입력하는 텍스트 뷰
+    // addSubview 인스턴스가 먼저 올라가야 하기 때문에 lazy로 선언
     private lazy var emailTextFieldView: UIView = {
         let view = UIView()
         
@@ -272,7 +275,7 @@ class ViewController: UIViewController {
         
     }
     
-    //MARK: - 비밀번호 가린거 풀기
+    // MARK: - 비밀번호 가린거 풀기
     @objc private func passwordSecureModeSetting() {
         
         passwordTextField.isSecureTextEntry.toggle()
@@ -309,7 +312,6 @@ func isValidPassword(pw: String?) -> Bool{
     
     return pwResult.evaluate(with: pw)
 }
-
 
 
 
