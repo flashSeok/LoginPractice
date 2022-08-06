@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CCA460BF289E97790084ACBF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA460BE289E97790084ACBF /* LoginView.swift */; };
+		CCA460C2289E9D9D0084ACBF /* CheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA460C1289E9D9D0084ACBF /* CheckManager.swift */; };
 		CCD1CE482895760E0001CC69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD1CE472895760E0001CC69 /* AppDelegate.swift */; };
 		CCD1CE4A2895760E0001CC69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD1CE492895760E0001CC69 /* SceneDelegate.swift */; };
 		CCD1CE4C2895760E0001CC69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD1CE4B2895760E0001CC69 /* ViewController.swift */; };
@@ -16,7 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CCD1CE442895760E0001CC69 /* LoginPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCA460BE289E97790084ACBF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		CCA460C1289E9D9D0084ACBF /* CheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckManager.swift; sourceTree = "<group>"; };
+		CCD1CE442895760E0001CC69 /* LoginPracticeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginPracticeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD1CE472895760E0001CC69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD1CE492895760E0001CC69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CCD1CE4B2895760E0001CC69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +41,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CCA460BB289E96E30084ACBF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CCD1CE4B2895760E0001CC69 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CCA460BC289E96E80084ACBF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCA460BE289E97790084ACBF /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CCA460C0289E9D7A0084ACBF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CCA460C1289E9D9D0084ACBF /* CheckManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CCD1CE3B2895760E0001CC69 = {
 			isa = PBXGroup;
 			children = (
@@ -48,7 +76,7 @@
 		CCD1CE452895760E0001CC69 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CCD1CE442895760E0001CC69 /* LoginPractice.app */,
+				CCD1CE442895760E0001CC69 /* LoginPracticeMVC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,9 +86,11 @@
 			children = (
 				CCD1CE472895760E0001CC69 /* AppDelegate.swift */,
 				CCD1CE492895760E0001CC69 /* SceneDelegate.swift */,
-				CCD1CE4B2895760E0001CC69 /* ViewController.swift */,
-				CCD1CE4D2895760E0001CC69 /* Main.storyboard */,
+				CCA460C0289E9D7A0084ACBF /* Models */,
+				CCA460BC289E96E80084ACBF /* Views */,
+				CCA460BB289E96E30084ACBF /* Controllers */,
 				CCD1CE502895760E0001CC69 /* Assets.xcassets */,
+				CCD1CE4D2895760E0001CC69 /* Main.storyboard */,
 				CCD1CE522895760E0001CC69 /* LaunchScreen.storyboard */,
 				CCD1CE552895760E0001CC69 /* Info.plist */,
 			);
@@ -70,9 +100,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CCD1CE432895760E0001CC69 /* LoginPractice */ = {
+		CCD1CE432895760E0001CC69 /* LoginPracticeMVC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CCD1CE582895760E0001CC69 /* Build configuration list for PBXNativeTarget "LoginPractice" */;
+			buildConfigurationList = CCD1CE582895760E0001CC69 /* Build configuration list for PBXNativeTarget "LoginPracticeMVC" */;
 			buildPhases = (
 				CCD1CE402895760E0001CC69 /* Sources */,
 				CCD1CE412895760E0001CC69 /* Frameworks */,
@@ -82,9 +112,9 @@
 			);
 			dependencies = (
 			);
-			name = LoginPractice;
+			name = LoginPracticeMVC;
 			productName = LoginPractice;
-			productReference = CCD1CE442895760E0001CC69 /* LoginPractice.app */;
+			productReference = CCD1CE442895760E0001CC69 /* LoginPracticeMVC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CCD1CE3F2895760E0001CC69 /* Build configuration list for PBXProject "LoginPractice" */;
+			buildConfigurationList = CCD1CE3F2895760E0001CC69 /* Build configuration list for PBXProject "LoginPracticeMVC" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CCD1CE432895760E0001CC69 /* LoginPractice */,
+				CCD1CE432895760E0001CC69 /* LoginPracticeMVC */,
 			);
 		};
 /* End PBXProject section */
@@ -140,6 +170,8 @@
 			files = (
 				CCD1CE4C2895760E0001CC69 /* ViewController.swift in Sources */,
 				CCD1CE482895760E0001CC69 /* AppDelegate.swift in Sources */,
+				CCA460C2289E9D9D0084ACBF /* CheckManager.swift in Sources */,
+				CCA460BF289E97790084ACBF /* LoginView.swift in Sources */,
 				CCD1CE4A2895760E0001CC69 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +334,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.henrykim92.LoginPractice;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.henrykim92.LoginPracticeMVC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -332,7 +364,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.henrykim92.LoginPractice;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.henrykim92.LoginPracticeMVC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -343,7 +375,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CCD1CE3F2895760E0001CC69 /* Build configuration list for PBXProject "LoginPractice" */ = {
+		CCD1CE3F2895760E0001CC69 /* Build configuration list for PBXProject "LoginPracticeMVC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCD1CE562895760E0001CC69 /* Debug */,
@@ -352,7 +384,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CCD1CE582895760E0001CC69 /* Build configuration list for PBXNativeTarget "LoginPractice" */ = {
+		CCD1CE582895760E0001CC69 /* Build configuration list for PBXNativeTarget "LoginPracticeMVC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCD1CE592895760E0001CC69 /* Debug */,
